@@ -59,7 +59,7 @@ These created files can be further analyzed to gain important insight of the Med
 FUNCTIONING OF EACH MODULE
 ==============================
 
-1. EXTRACTION MODULE
+## 1. EXTRACTION MODULE
 ------------------------------
 * Requirements: Medicine.zip file should exist in the present working directory (PWD)
  * Make sure that Medicine.zip has correct directory structure
@@ -69,14 +69,14 @@ FUNCTIONING OF EACH MODULE
 * Output: A new directory called Medicine will be created in the PWD
 * Function: Extracts the Medicine.zip file in the PWD
 
-2. PARSING MODULE
+## 2. PARSING MODULE
 ---------------------------------
 * Requirements: Extracted directory called Medcine should exist in the PWD
 * Input arguments: Nothing
 * Output: A new directory calld text_corpus_full will be created containing the parsed .txt files
 * Function: Parses the xmls in the Medicine directory by dividing a xml into sections and extracting all the text inside it. Also checks for english language
 
-3. START SERVER MODULE
+## 3. START SERVER MODULE
 ----------------------------------
 * Requirements: Download the latest dbpedia spotlight jar file and the latest english model
  * have a look at: https://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/Run-from-a-JAR
@@ -88,7 +88,7 @@ FUNCTIONING OF EACH MODULE
 * Output: Starts the server locally and returns the subprocess object of the server
 * Function: Executes the bash command to start the dbpedia spotlight server
 
-4. CLEANING MODULE
+## 4. CLEANING MODULE
 -----------------------------------
 * Requirements: Dbpedia spotlight server should be started using the Start server module
 * Input arguments: The subprocess object of the server
@@ -129,7 +129,7 @@ FUNCTIONING OF EACH MODULE
  * **analyzed_term_topic_(given_rank).txt** has the topic coherence statistics and the top 10 important terms in each topic
  * **analyzed_doc_topic_(given_rank).txt** has the top 3 important topics in each document
  * **coherence_term_topic_(given_rank)** is a pickle file containing a list of coherence of all the learnt topics
- 
+
 9. TESTING MODULE
 -----------------------------------------
 * Requirements: testing_data directory should exist in PWD, Topic learning module should be executed for the given rank
