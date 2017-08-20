@@ -60,7 +60,7 @@ FUNCTIONING OF EACH MODULE
 ==============================
 
 ## 1. EXTRACTION MODULE
-------------------------------
+
 * Requirements: Medicine.zip file should exist in the present working directory (PWD)
  * Make sure that Medicine.zip has correct directory structure
  * Look at the directory structure of Medicine.zip
@@ -69,15 +69,19 @@ FUNCTIONING OF EACH MODULE
 * Output: A new directory called Medicine will be created in the PWD
 * Function: Extracts the Medicine.zip file in the PWD
 
+------------------------------
+
 ## 2. PARSING MODULE
----------------------------------
+
 * Requirements: Extracted directory called Medcine should exist in the PWD
 * Input arguments: Nothing
 * Output: A new directory calld text_corpus_full will be created containing the parsed .txt files
 * Function: Parses the xmls in the Medicine directory by dividing a xml into sections and extracting all the text inside it. Also checks for english language
 
+---------------------------------
+
 ## 3. START SERVER MODULE
-----------------------------------
+
 * Requirements: Download the latest dbpedia spotlight jar file and the latest english model
  * have a look at: https://github.com/dbpedia-spotlight/dbpedia-spotlight/wiki/Run-from-a-JAR
  * Or use the already provided dbpedia-spotlight-0.7.1.jar (jar file) and en_2+2 (english model).
@@ -88,29 +92,37 @@ FUNCTIONING OF EACH MODULE
 * Output: Starts the server locally and returns the subprocess object of the server
 * Function: Executes the bash command to start the dbpedia spotlight server
 
+----------------------------------
+
 ## 4. CLEANING MODULE
------------------------------------
+
 * Requirements: Dbpedia spotlight server should be started using the Start server module
 * Input arguments: The subprocess object of the server
 * Output: Creates a directory called dbpedia_filtered_corpus_full **(TRAINING CORPUS)** containing the annotated .txt files
 * Function: Calls the dbpedia spotlight servers annotate service, to get the dbpedia mentions from the text documents in text_corpus_full
 
-5. SPLITTING MODULE
-------------------------------------
+-----------------------------------
+
+## 5. SPLITTING MODULE
+
 * Requirements: dbpedia_filtered_corpus_full directory should exist in the PWD
 * Input arguments: Percentage of documents to be used for testing purpose after training
 * Output: Creates a directory called testing_data **(TESTING CORPUS)** which contains the documents to be used for testing
 * Function: Moves a given percentage of random documents from dbpedia_filtered_corpus_full to testing_directory
 
-6. FEATURE EXTRACTION MODULE
--------------------------------------
+------------------------------------
+
+## 6. FEATURE EXTRACTION MODULE
+
 * Requirements: dbpedia_filtered_corpus_full directory should exist in the PWD
 * Input arguments: Nothing
 * Output: Creates a pickle file called features containing the important features of the **TRAINING CORPUS**
 * Function: Calculates features like tfidf , document term occurence, vocabulary from the **TRAINING CORPUS**
 
-7. TOPIC LEARNING MODULE
----------------------------------------
+-------------------------------------
+
+## 7. TOPIC LEARNING MODULE
+
 * Requirements: features file should exist in the PWD, symnmf2 directory is also needed.
 * Input arguments: Path of the symnmf2 directory and No. of latent topics to learn
 * Output: Creates 4 files, term_topic_<given_rank>, term_topic_details_<given_rank>.txt, doc_topic_<given_rank>, doc_topic_details_<given_rank>.txt
@@ -120,8 +132,10 @@ FUNCTIONING OF EACH MODULE
  * **doc_topic_(given_rank)** contains the document_topic matrix in pickle format
  * **doc_topic_details_(given_rank).txt** has details of the performance of NMF which does document topic inference
 
-8. ANALYZE MODULE
-----------------------------------------
+---------------------------------------
+
+## 8. ANALYZE MODULE
+
 * Requirements: Topic learning module should be executed for the given rank
 * Input arguments: Rank of the term_topic and document_topic matrix to analyze
 * Output: Creates three files, analyzed_term_topic_<given_rank>.txt, analyzed_doc_topic_<given_rank>.txt, coherence_term_topic_<given_rank>
@@ -130,12 +144,16 @@ FUNCTIONING OF EACH MODULE
  * **analyzed_doc_topic_(given_rank).txt** has the top 3 important topics in each document
  * **coherence_term_topic_(given_rank)** is a pickle file containing a list of coherence of all the learnt topics
 
-9. TESTING MODULE
------------------------------------------
+----------------------------------------
+
+## 9. TESTING MODULE
+
 * Requirements: testing_data directory should exist in PWD, Topic learning module should be executed for the given rank
 * Input arguments: Rank of topic_term matrix to be used for inferring the topics of each document
 * Output: Creates a file called **testing_doc_topic_(given_rank)**.txt
 * Function: Calculates the top 3 topics for each of the testing documents
+
+-----------------------------------------
 
 My Contact details
 ==============================
