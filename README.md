@@ -58,6 +58,7 @@ These created files can be further analyzed to gain important insight of the Med
 
 FUNCTIONING OF EACH MODULE
 ==============================
+
 1. Extraction Module
 ------------------------------
 * Requirements: Medicine.zip file should exist in the present working directory (PWD)
@@ -67,12 +68,14 @@ FUNCTIONING OF EACH MODULE
 * Input arguments: Nothing
 * Output: A new directory called Medicine will be created in the PWD
 * Function: Extracts the Medicine.zip file in the PWD
+
 2. Parsing Module
 ---------------------------------
 * Requirements: Extracted directory called Medcine should exist in the PWD
 * Input arguments: Nothing
 * Output: A new directory calld text_corpus_full will be created containing the parsed .txt files
 * Function: Parses the xmls in the Medicine directory by dividing a xml into sections and extracting all the text inside it. Also checks for english language
+
 3. Start server Module
 ----------------------------------
 * Requirements: Download the latest dbpedia spotlight jar file and the latest english model
@@ -84,24 +87,28 @@ FUNCTIONING OF EACH MODULE
  *2. Path of the dbpedia spotlight english language model directory
 * Output: Starts the server locally and returns the subprocess object of the server
 * Function: Executes the bash command to start the dbpedia spotlight server
+
 4. Cleaning Module
 -----------------------------------
 * Requirements: Dbpedia spotlight server should be started using the Start server module
 * Input arguments: The subprocess object of the server
 * Output: Creates a directory called dbpedia_filtered_corpus_full **(TRAINING CORPUS)** containing the annotated .txt files
 * Function: Calls the dbpedia spotlight servers annotate service, to get the dbpedia mentions from the text documents in text_corpus_full
+
 5. Splitting Module
 ------------------------------------
 * Requirements: dbpedia_filtered_corpus_full directory should exist in the PWD
 * Input arguments: Percentage of documents to be used for testing purpose after training
 * Output: Creates a directory called testing_data **(TESTING CORPUS)** which contains the documents to be used for testing
 * Function: Moves a given percentage of random documents from dbpedia_filtered_corpus_full to testing_directory
+
 6. Feature Extraction Module
 -------------------------------------
 * Requirements: dbpedia_filtered_corpus_full directory should exist in the PWD
 * Input arguments: Nothing
 * Output: Creates a pickle file called features containing the important features of the **TRAINING CORPUS**
 * Function: Calculates features like tfidf , document term occurence, vocabulary from the **TRAINING CORPUS**
+
 7. Topic Learning Module
 ---------------------------------------
 * Requirements: features file should exist in the PWD, symnmf2 directory is also needed.
@@ -112,6 +119,7 @@ FUNCTIONING OF EACH MODULE
  * **term_topic_details_(given_rank).txt** has the reconstruction error after performing symmetric nmf
  * **doc_topic_(given_rank)** contains the document_topic matrix in pickle format
  * **doc_topic_details_(given_rank).txt** has details of the performance of NMF which does document topic inference
+
 8. Analyze module
 ----------------------------------------
 * Requirements: Topic learning module should be executed for the given rank
@@ -121,6 +129,7 @@ FUNCTIONING OF EACH MODULE
  * **analyzed_term_topic_(given_rank).txt** has the topic coherence statistics and the top 10 important terms in each topic
  * **analyzed_doc_topic_(given_rank).txt** has the top 3 important topics in each document
  * **coherence_term_topic_(given_rank)** is a pickle file containing a list of coherence of all the learnt topics
+ 
 9. Testing module
 -----------------------------------------
 * Requirements: testing_data directory should exist in PWD, Topic learning module should be executed for the given rank
